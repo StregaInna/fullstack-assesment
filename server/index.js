@@ -2,11 +2,6 @@ const express = require('express')
 const morgan = require('morgan')
 const { restaurants, cuisines } = require('./db')
 
-// const records = parse(restCSV, {
-//     columns: true,
-//     skip_empty_lines: true
-//   })
-
 function server() {
   const app = express()
   const port = process.env.PORT || 5000
