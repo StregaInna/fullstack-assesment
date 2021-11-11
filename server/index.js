@@ -4,9 +4,10 @@ const { restaurants, cuisines } = require('./db')
 
 const mergeSort = require('./functions/priorityMergeSort')
 const priorities = require('./functions/priotities')
-//for tests
+
 const {fiveStar, restaurantFilter } = require('./functions/filter')
-const { specsOne, specsTwo} = require("./functions/filterTestSpecs")
+//for tests
+const { specsOne, specsTwo} = require('./functions/filterTestSpecs')
 
 
 
@@ -21,6 +22,7 @@ function server() {
   app.get('/api/restaurants/five_star', async (req, res, next) => {
     try{
       let list = await fiveStar(restaurants[0])
+      //console.log(list)
       res.send(await mergeSort(list, priorities) )
     }  catch (error){
       next(error)
