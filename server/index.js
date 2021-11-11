@@ -1,6 +1,7 @@
 const express = require('express')
 const morgan = require('morgan')
 const { restaurants, cuisines } = require('./db')
+const fiveStar = require('./functions/filter')
 
 function server() {
   const app = express()
@@ -10,8 +11,12 @@ function server() {
   app.use(express.json())
   app.use(express.urlencoded({ extended: true }))
 
-  app.get('/api/restaurant', (req, res) => res.send(restaurants))
-  app.get('/api/cuisines', (req, res) => res.send(cuisines))
+  app.get('/api/restaurant', async (req, res) => {
+    res.send(await fiveStar(restaurants[0]))
+  })
+  app.get('/api/cuisines', async (req, res) => {
+    res.send(cuisines)
+  })
   
 
   app.start = app.listen.bind(app, port, () => console.log(`Listening on port ${port}`))

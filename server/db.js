@@ -11,5 +11,4 @@ fs.createReadStream(__dirname+'/csv/restaurants.csv').pipe(parser(restaurants))
 const cuisines = []
 fs.createReadStream(__dirname+'/csv/cuisines.csv').pipe(parser(cuisines))
 
-
 module.exports = {restaurants, cuisines}
