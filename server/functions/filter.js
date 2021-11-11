@@ -40,4 +40,4 @@ function restaurantFilter(restaurants, specs, cuisines){
     } else {return filteredByPrice}
 }
 
-module.exports = fiveStar
+module.exports = {fiveStar, restaurantFilter}

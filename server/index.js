@@ -1,7 +1,12 @@
 const express = require('express')
 const morgan = require('morgan')
 const { restaurants, cuisines } = require('./db')
-const fiveStar = require('./functions/filter')
+
+//for tests
+const {fiveStar, restaurantFilter } = require('./functions/filter')
+const { specsOne, specsTwo} = require("./functions/filterTestSpecs")
+
+
 
 function server() {
   const app = express()
@@ -11,8 +16,16 @@ function server() {
   app.use(express.json())
   app.use(express.urlencoded({ extended: true }))
 
-  app.get('/api/restaurant', async (req, res) => {
+  app.get('/api/restaurants/five_star', async (req, res) => {
     res.send(await fiveStar(restaurants[0]))
+  })
+
+  app.get('/api/restaurants/specsOne', async (req, res) => {
+    res.send(await restaurantFilter(restaurants[0], specsOne, cuisines[0]))
+  })
+
+  app.get('/api/restaurants/specsTwo', async (req, res) => {
+    res.send(await restaurantFilter(restaurants[0], specsTwo, cuisines[0]))
   })
   app.get('/api/cuisines', async (req, res) => {
     res.send(cuisines)
