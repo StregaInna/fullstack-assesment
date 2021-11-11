@@ -1,0 +1,17 @@
+{
+    "name": "rise-js-tech-challenge",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "start": "nodemon index.js"
+    },
+    "dependencies": {
+        "csv-parse": "^4.16.3",
+        "express": "^4.17.1",
+        "jquery-csv": "^1.0.21",
+        "morgan": "^1.10.0"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.7"
+    }
+}
