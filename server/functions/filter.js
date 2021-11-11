@@ -1,16 +1,22 @@
+
+
 function fiveStar(array){
     let fiveStarArray = array.filter(object => object.customer_rating === "5")
     return fiveStarArray
 }
 
-function getCuisineId (cuisine, cuisines){
-    for (let i = 0; i < cuisines; i++){
-        if (cuisines[i].name.toLowerCase().indexOf(cuisine.toLowerCase())>=0){
-            return cuisines[i].id
+function cuisineFilter(cuisines, cuisine){
+    console.log(cuisine)
+    let filteredCuisines = []
+    for(let i = 0; i < cuisines.length; i++){
+        console.log(cuisines[i])
+        if (cuisines[i].name.toLowerCase().indexOf(cuisine.toLowerCase())){
+            filteredCuisines.push(cuisines[1].id)
         }
     }
-    return "0"
+    return filteredCuisines
 }
+
 
 function restaurantFilter(restaurants, specs, cuisines){
 
@@ -35,8 +41,8 @@ function restaurantFilter(restaurants, specs, cuisines){
     } else {filteredByPrice = filteredByDistance}
 
     if (specs.cuisine.length>0){
-        let cuisine_id = getCuisineId(specs.cuisine, cuisines)
-        return filteredByPrice.filter(restaurant => restaurant.cuisine_id === cuisine_id)
+        let cuisineMatchs = cuisineFilter(cuisines, specs.cuisine)
+        return filteredByPrice.filter(restaurant => cuisineMatchs.includes(restaurant.cuisine_id))
     } else {return filteredByPrice}
 }
 
