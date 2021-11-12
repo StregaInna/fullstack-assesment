@@ -15,15 +15,20 @@ class RequestForm extends React.Component {
                 cuisine: ''
             }
         }
+        this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleChange = this.handleChange.bind(this)
     }
     handleChange(event) {
         this.setState({
-            [event.target.name]: event.target.value
+            specs:{
+                [event.target.name]: event.target.value
+            }
         })
     }    
-    handleSubmit(event){
+    handleSubmit = async(event)=>{
+        console.log('click')
         event.preventDefault()
-        this.props.fetchRestaurants(this.state.specs, this.state.numberOfResults)
+        await this.props.fetchRestaurants(this.state.specs, this.state.numberOfResults)
         this.setState({
             specs: {
                 name:'',
@@ -39,7 +44,7 @@ class RequestForm extends React.Component {
         return(
             <div>
                 <h1>What would you like to eat?</h1>
-                <form>
+                <form onSubmit={this.handleSubmit} >
                     <lable htmlFor="restaurantName">Restaurant Name</lable>
                     <input name="name" onChange={this.handleChange} value={name} />
                     <lable htmlFor="customerRating">Customer Rating</lable>
@@ -48,7 +53,7 @@ class RequestForm extends React.Component {
                     <input name="price" onChange={this.handleChange} value={price} />
                     <lable htmlFor="cuisine">Cuisine Type</lable>
                     <input name="cuisine" onChange={this.handleChange} value={cuisine} />
-
+                    <button type="submit">submit</button>
                 </form>
             </div>
         )
