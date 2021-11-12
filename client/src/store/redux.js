@@ -7,7 +7,7 @@ const SET_RESULTS = 'SET_RESULTS'
 
 //ACTION CREATORS
 
-export const updateStudent = (restaurants) => {
+export const setRestaurants = (restaurants) => {
   return {
     type: SET_RESULTS,
     restaurants
@@ -16,11 +16,11 @@ export const updateStudent = (restaurants) => {
 
 //THUNK CREATORS
 
-export const fetchStudents = () => {
+export const fetchRestaurants = (specs, numberOfResults) => {
   return async (dispatch) => {
     try {
-      const {data} = await axios.get('/api/restaurants', )
-      dispatch((data))
+      const {data} = await axios.get('/api/restaurants', specs, numberOfResults)
+      dispatch(setRestaurants(data))
     }
     catch (error){
       console.error(error)
