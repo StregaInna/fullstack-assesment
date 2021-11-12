@@ -16,7 +16,7 @@ function split (array) {
     let leftIdx = 0
     let rightIdx = 0
     while (leftIdx < left.length || rightIdx < right.length){
-        console.log(leftIdx)
+        console.log(leftIdx, rightIdx)
         if (leftIdx === left.length) {
             merged.push(right[rightIdx])
             rightIdx++;
@@ -43,7 +43,7 @@ function split (array) {
                         leftIdx++
                     }
                     i = priorities.length
-                } else if (i===priorities.length){ //if we arrive at the end of our priorities list and all values have been equal, we will arbitrarily select the left value to push into the next position of the merged array
+                } else if (i===priorities.length-1){ //if we arrive at the end of our priorities list and all values have been equal, we will arbitrarily select the left value to push into the next position of the merged array
                     merged.push(left[leftIdx])
                     leftIdx++
                 }
@@ -60,5 +60,9 @@ function split (array) {
     const mergedRight = mergeSort(right, priorities)
     return merge(mergedLeft, mergedRight, priorities) // merge sorted!
   }
-  
+//   const priorities = require('./priotities')
+//   const {restaurants} = require('../db.js')
+//   debugger
+//   const answer = mergeSort(restaurants, priorities)
+
   module.exports = mergeSort
