@@ -1,15 +1,11 @@
 const express = require('express')
 const morgan = require('morgan')
-const { restaurants, cuisines } = require('./db')
 
-const mergeSort = require('./functions/priorityMergeSort')
-const priorities = require('./functions/priotities')
+const listGenerator = require('./listGenerator')
 
-const {fiveStar, restaurantFilter } = require('./functions/filter')
 //for tests
 const { specsOne, specsTwo} = require('./functions/filterTestSpecs')
-
-
+const { fiveStar } =  require('./functions/filter')
 
 function server() {
   const app = express()
@@ -19,26 +15,34 @@ function server() {
   app.use(express.json())
   app.use(express.urlencoded({ extended: true }))
 
-  app.get('/api/restaurants/five_star', async (req, res, next) => {
+  app.get('/api/restaurants', async (req, res, next) => {
     try{
-      let list = await fiveStar(restaurants[0])
-      //console.log(list)
-      res.send(await mergeSort(list, priorities) )
-    }  catch (error){
+      let data = await listGenerator(req.body.specs, req.body.numberOfResults)
+      res.send(data)
+    }catch (error){
       next(error)
-  }
+    }
   })
 
-  app.get('/api/restaurants/specsOne', async (req, res) => {
-    res.send(await restaurantFilter(restaurants[0], specsOne, cuisines[0]))
-  })
+//these are some routes I built for testing the backend
+  // app.get('/api/restaurants/five_star', async (req, res, next) => {
+  //   try{
+  //     let list = await fiveStar(restaurants[0])
+  //     res.send(await mergeSort(list, priorities) )
+  //   }  catch (error){
+  //     next(error)
+  //   }
+  // })
+  // app.get('/api/restaurants/specsOne', async (req, res) => {
+  //   res.send(await restaurantFilter(restaurants[0], specsOne, cuisines[0]))
+  // })
 
-  app.get('/api/restaurants/specsTwo', async (req, res) => {
-    res.send(await restaurantFilter(restaurants[0], specsTwo, cuisines[0]))
-  })
-  app.get('/api/cuisines', async (req, res) => {
-    res.send(cuisines)
-  })
+  // app.get('/api/restaurants/specsTwo', async (req, res) => {
+  //   res.send(await restaurantFilter(restaurants[0], specsTwo, cuisines[0]))
+  // })
+  // app.get('/api/cuisines', async (req, res) => {
+  //   res.send(cuisines)
+  // })
   
 
   app.start = app.listen.bind(app, port, () => console.log(`Listening on port ${port}`))
