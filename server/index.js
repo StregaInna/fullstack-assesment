@@ -1,7 +1,7 @@
 const express = require('express')
 const morgan = require('morgan')
 
-const listGenerator = require('./listGenerator')
+const { listGenerator } = require('./listGenerator')
 
 //for tests
 const { specsOne, specsTwo} = require('./functions/filterTestSpecs')
@@ -15,8 +15,9 @@ function server() {
   app.use(express.json())
   app.use(express.urlencoded({ extended: true }))
 
-  app.get('/api/restaurants', async (req, res, next) => {
+  app.put('/api/restaurants', async (req, res, next) => {
     try{
+      console.dir(req.body)
       let data = await listGenerator(req.body.specs, req.body.numberOfResults)
       res.send(data)
     }catch (error){

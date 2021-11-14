@@ -19,7 +19,7 @@ function cuisineFilter(cuisines, cuisine){
 
 
 function restaurantFilter(restaurants, specs, cuisines){
-
+    console.dir(specs)
     let filteredByName
     if(specs.name.length>0){
         filteredByName = restaurants.filter(restaurant => restaurant.name.toLowerCase().indexOf(specs.name.toLowerCase())>=0)

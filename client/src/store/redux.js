@@ -19,7 +19,7 @@ export const setRestaurants = (restaurants) => {
 export const fetchRestaurants = (specs, numberOfResults) => {
   return async (dispatch) => {
     try {
-      const {data} = await axios.get('/api/restaurants', specs, numberOfResults)
+      const {data} = await axios.put('/api/restaurants', {specs, numberOfResults})
       dispatch(setRestaurants(data))
     }
     catch (error){

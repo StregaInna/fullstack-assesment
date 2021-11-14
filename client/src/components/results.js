@@ -11,7 +11,7 @@ export class Results extends React.Component {
                                 <div>
                                     <h3>{restaurant.name}</h3>
                                     <ul>
-                                        <li>rating: {restaurant.rating}</li>
+                                        <li>rating: {restaurant.customer_rating}</li>
                                         <li>distance: {restaurant.distance}</li>
                                         <li>price: {restaurant.price}</li>
                                     </ul>
