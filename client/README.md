@@ -1,4 +1,5 @@
-## I build the front end with create-react-app. the standar readme file for it is bellow
+## I build the front end with create-react-app. T
+he standard readme file for it is bellow. The README file for my webapp is up the file tree one rung 'cd ../README.md'
 
 # Getting Started with Create React App
 
