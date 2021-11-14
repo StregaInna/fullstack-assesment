@@ -17,7 +17,6 @@ function server() {
 
   app.put('/api/restaurants', async (req, res, next) => {
     try{
-      console.dir(req.body)
       let data = await listGenerator(req.body.specs, req.body.numberOfResults)
       res.send(data)
     }catch (error){

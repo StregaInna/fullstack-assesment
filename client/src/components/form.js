@@ -30,7 +30,6 @@ class RequestForm extends React.Component {
             price: this.state.price,
             cuisine: this.state.cuisine
         }
-        console.log(specs)
         await this.props.fetchRestaurants(specs, this.state.numberOfResults)
         this.setState({
             specs: {

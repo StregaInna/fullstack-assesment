@@ -3,7 +3,7 @@ const { restaurants, cuisines } = require('./db')
 const mergeSort = require('./functions/priorityMergeSort')
 const priorities = require('./functions/priotities')
 
-const {fiveStar, restaurantFilter } = require('./functions/filter')
+const {fiveStar, restaurantFilter } = require('./functions/filter')//this one was for tesing purposes
 
 function listGenerator (specs, length){
     const unsorted = restaurantFilter(restaurants[0], specs, cuisines[0])

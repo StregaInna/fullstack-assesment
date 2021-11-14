@@ -20,8 +20,6 @@ function split (array) {
     let rightIdx = 0
     while (leftIdx < left.length || rightIdx < right.length){
 
-        // console.log(leftIdx, rightIdx) //this is still here incase I need it for further debugging
-
         //step one is to check if we have already gotten through one of the arrays to be merged
         if (leftIdx === left.length) {
             merged.push(right[rightIdx])

@@ -1,3 +1,9 @@
+# Solution for Fullstack Technical Assessment
+The Solution to the technical problem is on the backend in a folder called server/functions. There you will find the filtering function (which takes specs from the front end for how to finler the results) and the sorting function(s) which run a merge sort algorithm with priorities for what to sort by. The priorities are in an array in a separate file so that the sorting function can be more reusable anda future upgrade of this web app could allow the user to set their own priorities on the front end. I also set the desired number of result on the front end so that a future upgrade could also allow the users to set that themselves as well. The is currently no real database as I assumed the CSV file should be treated as a mock database, however if you would like me to refactor it to have a postgreSQL database seeded from the CSV file instead, just let me know.
+
+## To run
+You will want 2 terminals open, one in the server file and another in the client file. For each you will need to use the 'npm install' compand first to get all of the dependencies set up, then 'npm run start'
+The front-end react app should be on local host 3000 and the back-end api route will be on local host 5000
 
 
 

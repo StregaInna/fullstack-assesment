@@ -9,7 +9,6 @@ function cuisineFilter(cuisines, cuisine){
     console.log(cuisine)
     let filteredCuisines = []
     for(let i = 0; i < cuisines.length; i++){
-        console.log(cuisines[i])
         if (cuisines[i].name.toLowerCase().indexOf(cuisine.toLowerCase())){
             filteredCuisines.push(cuisines[1].id)
         }
@@ -37,7 +36,7 @@ function restaurantFilter(restaurants, specs, cuisines){
 
     let filteredByPrice
     if(specs.price.length>0){
-        filteredByPrice = filteredByDistance.filter(restaurant => parseInt(restaurant.distance) <= parseInt(specs.distance))
+        filteredByPrice = filteredByDistance.filter(restaurant => parseInt(restaurant.price) <= parseInt(specs.price))
     } else {filteredByPrice = filteredByDistance}
 
     if (specs.cuisine.length>0){
