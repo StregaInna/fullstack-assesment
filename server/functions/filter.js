@@ -6,13 +6,16 @@ function fiveStar(array){
 }
 
 function cuisineFilter(cuisines, cuisine){
-    console.log(cuisine)
+    let specsArray = cuisine.split(' ')
     let filteredCuisines = []
     for(let i = 0; i < cuisines.length; i++){
-        if (cuisines[i].name.toLowerCase().indexOf(cuisine.toLowerCase())){
-            filteredCuisines.push(cuisines[1].id)
+        for(let j = 0; j < specsArray.length; j++){
+            if (cuisines[i].name.toLowerCase().indexOf(specsArray[j].toLowerCase())>=0 ){
+                filteredCuisines.push(cuisines[i].id)
+            }
         }
     }
+    console.log(`fileter cuisines: ${filteredCuisines}`)
     return filteredCuisines
 }
 
@@ -21,8 +24,10 @@ function restaurantFilter(restaurants, specs, cuisines){
     console.dir(specs)
     let filteredByName
     if(specs.name.length>0){
-        filteredByName = restaurants.filter(restaurant => restaurant.name.toLowerCase().indexOf(specs.name.toLowerCase())>=0)
-    } else {filteredByName = restaurants}
+        filteredByName = restaurants.filter(restaurant => (
+             (restaurant.name.toLowerCase().indexOf(specs.name.toLowerCase())>=0) || (specs.name.toLowerCase().indexOf(restaurant.name.toLowerCase())>=0)
+            ))}
+         else {filteredByName = restaurants}
 
     let filteredByRating
     if(specs.customer_rating.length>0){
